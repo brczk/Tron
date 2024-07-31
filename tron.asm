@@ -290,7 +290,7 @@ CODE SEGMENT
                 p2Left:
                     mov di, offset p2i
 
-                    ; Inverz irany
+                    ; Opposite direction
                     mov bx, [di]
                     cmp bx, 1
                     jz Save2
@@ -301,7 +301,7 @@ CODE SEGMENT
                 p2Right:
                     mov di, offset p2i
 
-                    ; Inverz irany
+                    ; Opposite direction
                     mov bx, [di]
                     cmp bx, -1
                     jz Save2

@@ -1,0 +1,41 @@
+name: CI
+on:
+  push:
+    branches: [ main ]
+jobs:
+  container-test-job:
+    runs-on: ubuntu-latest
+    container:
+      image: sk3d/dosbox-x
+      options: --cpus 1 --volume ${{github.workspace}}:/repo
+    steps:
+      - name: 'Git checkout'
+        uses: actions/checkout@v3
+      - name: 'Setup node'
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'lts/*'
+      - name: 'Build'
+        uses: joncloud/dos-build-action@v1
+        with:
+          run: |
+            C:
+            CD SRC
+            TASM /zi TRON.ASM
+            TLINK /v TRON.OBJ
+          programs: |
+            $/turbo-asm/2.01:C:\TASM
+            src:C:\SRC
+          conf: |
+            [dosbox]
+            memsize=256
+
+            [cpu]
+            cycles=max
+            turbo=true
+      - name: 'Bundle creation'
+        run: bash bundler.sh
+      - name: Github pages deployment
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: web

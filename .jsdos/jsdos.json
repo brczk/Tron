@@ -106,7 +106,7 @@
       "script": {
         "name": "lines",
         "description": "Use \\n to separate lines",
-        "value": "WASM.EXE",
+        "value": "TRON.EXE",
         "allowedValues": []
       }
     }

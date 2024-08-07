@@ -3,7 +3,7 @@ on:
   push:
     branches: [ main ]
 jobs:
-  container-test-job:
+  gh-pages-deployment:
     runs-on: ubuntu-latest
     container:
       image: sk3d/dosbox-x
@@ -35,7 +35,7 @@ jobs:
             turbo=true
       - name: 'Bundle creation'
         run: bash bundler.sh
-      - name: Github pages deployment
+      - name: 'Github pages deployment'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: web

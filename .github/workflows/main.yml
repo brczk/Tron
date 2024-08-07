@@ -34,7 +34,7 @@ jobs:
             cycles=max
             turbo=true
       - name: 'Bundle creation'
-        run: bash bundler.sh
+        run: cp src/TRON.EXE . && zip -r bundle.jsdos TRON.EXE .jsdos/ && mv bundle.jsdos web/
       - name: 'Github pages deployment'
         uses: JamesIves/github-pages-deploy-action@v4
         with:

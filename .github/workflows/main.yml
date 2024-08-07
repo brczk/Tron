@@ -6,7 +6,7 @@ jobs:
   gh-pages-deployment:
     runs-on: ubuntu-latest
     container:
-      image: sk3d/dosbox-x
+      image: brczk/dosbox-x
       options: --cpus 1 --volume ${{github.workspace}}:/repo
     steps:
       - name: 'Git checkout'
